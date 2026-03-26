@@ -171,3 +171,46 @@ footer {
 .project-card a:hover {
     text-decoration: underline;
 }
+
+.skills-grid {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.skill-group {
+    flex: 1;
+    min-width: 260px;
+}
+
+.skill-group h3 {
+    color: #202124;
+    margin-bottom: 16px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.skill-item {
+    margin-bottom: 16px;
+}
+
+.skill-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #5f6368;
+    margin-bottom: 6 px;
+}
+
+.skill-bar-bg {
+    background: #e8eaed;
+    border-radius: 4px;
+    height: 6px;
+}
+
+.skill-bar-fill {
+    background: #1a73e8;
+    height: 6px;
+    border-radius: 4px;
+}
