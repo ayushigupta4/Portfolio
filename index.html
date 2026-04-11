@@ -3,6 +3,7 @@
     <head>
         <title>My Portfolio</title>
         <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
@@ -29,7 +30,7 @@
         </div>
 
         <header>
-            <h1>Hi, I'm Ayushi.</h1>
+            <h1>Hi, I'm <span class="hero-name">Ayushi Gupta</span>.</h1>
             <p>Full-Stack Developer & Software Engineer</p>
         </header>
 
@@ -43,6 +44,11 @@
                     <p>My journey includes preparing for Civil Services from 2019 to 2023, where I qualified for
                     the mains exam (Top 1.4%), strengthening my analytical and strategic thinking abilities. I’m driven by the desire
                     to leverage my technical skills to contribute to projects that have a real-world impact.</p>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-primary">View Projects</a>
+                    <a href="#contact" class="btn-secondary">Get in Touch</a>
                 </div>
         
                 <div class="about-stats">
@@ -66,58 +72,78 @@
             <h2>Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>Headless Content Management System</h3>
-                    <p>A headless CMS with dynamic entity creation and attribute-based table generation.</p>
-                    <div class="project-tags">
-                        <span class="tag">React.js</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Sequelize(MySQL)</span>
+                    <div class="card-top" style="background: #e8f0fe;"></div>
+                    <div class="card-body">
+                        <h3>Headless Content Management System</h3>
+                        <p>A headless CMS with dynamic entity creation and attribute-based table generation.</p>
+                    
+                        <div class="project-tags">
+                            <span class="tag">React.js</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Sequelize(MySQL)</span>
+                        </div>
+                        <a href="https://github.com/ayushigupta4/cms-backend.git">Github 🔗</a>
                     </div>
-                    <a href="https://github.com/ayushigupta4/cms-backend.git">Github 🔗</a>
                 </div>
                 <div class="project-card">
-                    <h3>Taara Jewellery</h3>
-                    <p>A responsive and user-friendly jewellery shopping website.</p>
-                    <div class="project-tags">
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">Javascript</span>
+                    <div class="card-top" style="background: #fce8e6;"></div>
+                    <div class="card-body">
+                        <h3>Taara Jewellery</h3>
+                        <p>A responsive and user-friendly jewellery shopping website.</p>
+                    
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">Javascript</span>
+                        </div>
+                        <a href="https://ayushigupta4.github.io/Taara-Jewellery/">View Project 🔗</a>
                     </div>
-                    <a href="https://ayushigupta4.github.io/Taara-Jewellery/">View Project 🔗</a>
                 </div>
                 <div class="project-card">
-                    <h3>Quiz App</h3>
-                    <p>A RESTful Online Quiz Application that enables users to register, authenticate, create quizzes, and evaluate performance.</p>
-                    <div class="project-tags">
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Express.js</span>
-                        <span class="tag">Sequelize</span>
-                        <span class="tag">MySQL</span>
-                        <span class="tag">JWT Authentication</span>
+                    <div class="card-top" style="background: #e6f4ea;"></div>
+                    <div class="card-body">
+                        <h3>Quiz App</h3>
+                        <p>A RESTful Online Quiz Application that enables users to register, authenticate, create quizzes, and evaluate performance.</p>
+                    
+                        <div class="project-tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Express.js</span>
+                            <span class="tag">Sequelize</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">JWT Authentication</span>
+                        </div>
+                        <a href="https://github.com/ayushigupta4/quiz-app.git">Github 🔗</a>
                     </div>
-                    <a href="https://github.com/ayushigupta4/quiz-app.git">Github 🔗</a>
                 </div>
                 <div class="project-card">
-                    <h3>Agriculture Analysis</h3>
-                    <p>A React-based data analytics application to analyze Indian agriculture data from the National Data and Analytics Platform (NITI Aayog). The application processes crop production data from 1950–2020 and presents insights.</p>
-                    <div class="project-tags">
-                        <span class="tag">React.js</span>
-                        <span class="tag">Javascript</span>
-                        <span class="tag">Mantine UI</span>
-                        <span class="tag">Data Processing</span>
+                    <div class="card-top" style="background: #fef7e0;"></div>
+                    <div class="card-body">
+                        <h3>Agriculture Analysis</h3>
+                        <p>A React-based data analytics application to analyze Indian agriculture data from the National Data and Analytics Platform (NITI Aayog). The application processes crop production data from 1950–2020 and presents insights.</p>
+                    
+                        <div class="project-tags">
+                            <span class="tag">React.js</span>
+                            <span class="tag">Javascript</span>
+                            <span class="tag">Mantine UI</span>
+                            <span class="tag">Data Processing</span>
+                        </div>
+                        <a href="https://github.com/ayushigupta4/agriculture-analysis.git">Github 🔗</a>
                     </div>
-                    <a href="https://github.com/ayushigupta4/agriculture-analysis.git">Github 🔗</a>
                 </div>
                 <div class="project-card">
-                    <h3>NewsFlash</h3>
-                    <p>A React-based News Application that fetches and displays real-time news articles using external APIs.</p>
-                    <div class="project-tags">
-                        <span class="tag">React.js</span>
-                        <span class="tag">Javascript</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">REST API</span>
+                    <div class="card-top" style="background: #e8f0fe;"></div>
+                    <div class="card-body">
+                        <h3>NewsFlash</h3>
+                        <p>A React-based News Application that fetches and displays real-time news articles using external APIs.</p>
+                    
+                        <div class="project-tags">
+                            <span class="tag">React.js</span>
+                            <span class="tag">Javascript</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">REST API</span>
+                        </div>
+                        <a href="https://github.com/ayushigupta4/newsapp.git">Github 🔗</a>
                     </div>
-                    <a href="https://github.com/ayushigupta4/newsapp.git">Github 🔗</a>
                 </div>
             </div>
         </section>
