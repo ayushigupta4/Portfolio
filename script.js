@@ -1,153 +1,155 @@
-const tabs = document.querySelectorAll('.tab-link');
+document.addEventListener('DOMContentLoaded', function() {
 
-tabs.forEach(function(tab) {
+    const tabs = document.querySelectorAll('.tab-link');
 
-    tab.addEventListener('click', function() {
+    tabs.forEach(function(tab) {
 
-        tabs.forEach(function(t) {
-            t.classList.remove('active-tab');
-        });
+        tab.addEventListener('click', function() {
 
-        tab.classList.add('active-tab');
-    });
-});
-
-const skillBars = document.querySelectorAll('.skill-bar-fill');
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-
-        if(entry.isIntersecting) {
-
-            skillBars.forEach(function(bar) {
-                const targetWidth = bar.getAttribute('data-width');
-                bar.style.width = targetWidth + '%';
+            tabs.forEach(function(t) {
+                t.classList.remove('active-tab');
             });
-        }
+
+            tab.classList.add('active-tab');
+        });
     });
-});
 
-const skillsSection = document.querySelector('#skills');
-observer.observe(skillsSection);
+    const skillBars = document.querySelectorAll('.skill-bar-fill');
 
-//Contact Form
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
 
-const form = document.querySelector('.contact-form');
-const button = form.querySelector('button');
+            if(entry.isIntersecting) {
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
+                skillBars.forEach(function(bar) {
+                    const targetWidth = bar.getAttribute('data-width');
+                    bar.style.width = targetWidth + '%';
+                });
+            }
+        });
+    });
 
-    const name = document.querySelector('#name').value.trim();
-    const email = document.querySelector('#email').value.trim();
-    const message = document.querySelector('#message').value.trim();
+    const skillsSection = document.querySelector('#skills');
+    observer.observe(skillsSection);
 
-    if(name === '' || email === '' || message === '') {
-        button.textContent = '⚠️ Please fill all fields';
-        button.style.background = '#ea4335';
+    //Contact Form
+
+    const form = document.querySelector('.contact-form');
+    const button = form.querySelector('button');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.querySelector('#name').value.trim();
+        const email = document.querySelector('#email').value.trim();
+        const message = document.querySelector('#message').value.trim();
+
+        if(name === '' || email === '' || message === '') {
+            button.textContent = '⚠️ Please fill all fields';
+            button.style.background = '#ea4335';
+            setTimeout(function() {
+                button.textContent = 'Send Message';
+                button.style.background = '';
+            }, 2500);
+            return;
+        }
+
+        button.textContent = '✅ Message Sent!';
+        button.style.background = '#34a853';
         setTimeout(function() {
             button.textContent = 'Send Message';
             button.style.background = '';
         }, 2500);
-        return;
+    });
+
+    //Hero Section
+
+    const phrases =  [
+        'Full-Stack Developer',
+        'Problem Solver',
+        'Open Source Contributor',
+        'Civil Services Prelims Qualifier'
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typewriterEl = document.getElementById('typewriter');
+
+    function typewriter() {
+
+        //console.log('charIndex:', charIndex, 'isDeleting:', isDeleting, 'phrase:', phraseIndex);
+        const currentPhrase = phrases[phraseIndex];
+
+        if(isDeleting) {
+            typewriterEl.textContent = currentPhrase.slice(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typewriterEl.textContent = currentPhrase.slice(0, charIndex + 1);
+            charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            setTimeout(function() {isDeleting = true;}, 1500);
+        }
+
+        if(isDeleting && charIndex === 0) {
+            isDeleting = false;
+            charIndex = 0;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+        }
+
+        setTimeout(typewriter, isDeleting? 60:100);
     }
 
-    button.textContent = '✅ Message Sent!';
-    button.style.background = '#34a853';
-    setTimeout(function() {
-        button.textContent = 'Send Message';
-        button.style.background = '';
-    }, 2500);
-});
+    typewriter();
 
-//Hero Section
+    //tabs
 
-const phrases =  [
-    'Full-Stack Developer',
-    'Problem Solver',
-    'Open Source Contributor',
-    'Civil Services Prelims Qualifier'
-];
+    const sections = document.querySelectorAll('.tab-section');
 
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typewriterEl = document.getElementById('typewriter');
+    function switchTab(targetId) {
+        //Update tabs
+        tabs.forEach(function(tab) {
+            tab.classList.remove('active-tab');
+        });
 
-function typewriter() {
+        //Update sections
+        sections.forEach(function(section) {
+            section.classList.remove('active-section');
+        });
 
-    //console.log('charIndex:', charIndex, 'isDeleting:', isDeleting, 'phrase:', phraseIndex);
-    const currentPhrase = phrases[phraseIndex];
+        //Show or hide hero based on active tab
+        const hero = document.getElementById('hero');
+        if (targetId === 'about') {
+            hero.classList.add('active-hero');
+        } else {
+            hero.classList.remove('active-hero');
+        }
 
-    if(isDeleting) {
-        typewriterEl.textContent = currentPhrase.slice(0, charIndex - 1);
-        charIndex--;
-    } else {
-        typewriterEl.textContent = currentPhrase.slice(0, charIndex + 1);
-        charIndex++;
+        //Activate clicked tab
+        const clickedTab = document.querySelector(`.tab-link[href="#${targetId}"]`);
+        if(clickedTab) clickedTab.classList.add('active-tab');
+
+        const targetSection = document.getElementById(targetId);
+        if(targetSection) targetSection.classList.add('active-section');
     }
 
-    if (!isDeleting && charIndex === currentPhrase.length) {
-        setTimeout(function() {isDeleting = true;}, 1500);
-    }
-
-    if(isDeleting && charIndex === 0) {
-        isDeleting = false;
-        charIndex = 0;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-    }
-
-    setTimeout(typewriter, isDeleting? 60:100);
-}
-
-typewriter();
-
-//tabs
-
-const sections = document.querySelectorAll('.tab-section');
-
-function switchTab(targetId) {
-    //Update tabs
+    //Listen for tab clicks
     tabs.forEach(function(tab) {
-        tab.classList.remove('active-tab');
+        tab.addEventListener('click', function(event) {
+            event.preventDefault();
+            const targetId = tab.getAttribute('href').replace('#', '');
+            switchTab(targetId);
+        });
     });
 
-    //Update sections
-    sections.forEach(function(section) {
-        section.classList.remove('active-section');
-    });
+    //Show first tab by default
+    switchTab('about');
 
-    //Show or hide hero based on active tab
-    const hero = document.getElementById('hero');
-    if (targetId === 'about') {
-        hero.classList.add('active-hero');
-    } else {
-        hero.classList.remove('active-hero');
+    function handleHeroBtn(event, targetId) {
+        event.preventDefault();
+        switchTab(targetId);
     }
 
-    //Activate clicked tab
-    const clickedTab = document.querySelector(`.tab-link[href="#${targetId}"]`);
-    if(clickedTab) clickedTab.classList.add('active-tab');
-
-    const targetSection = document.getElementById(targetId);
-    if(targetSection) targetSection.classList.add('active-section');
-}
-
-//Listen for tab clicks
-tabs.forEach(function(tab) {
-    tab.addEventListener('click', function(event) {
-        event.preventDefault();
-        const targetId = tab.getAttribute('href').replace('#', '');
-        switchTab(targetId);
-    });
 });
-
-//Show first tab by default
-switchTab('about');
-
-function handleHeroBtn(event, targetId) {
-    event.preventDefault();
-    switchTab(targetId);
-}
-
-
