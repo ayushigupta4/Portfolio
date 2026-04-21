@@ -404,6 +404,16 @@ footer {
 .skill-group {
     flex: 1;
     min-width: 260px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.skill-group:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
 }
 
 .skill-group h3 {
@@ -415,15 +425,32 @@ footer {
 }
 
 .skill-item {
-    margin-bottom: 16px;
+    background: #f8f9fa;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    transition: background 0.15s;
+}
+
+.skill-item:last-child {
+    margin-bottom: 0;
+}
+
+.skill-item:hover {
+    background: #e8f0fe;
 }
 
 .skill-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.skill-name {
     font-size: 14px;
-    color: var(--text-secondary);
-    margin-bottom: 6 px;
+    color: var(--text);
+    font-weight: 500;
 }
 
 .contact-grid {

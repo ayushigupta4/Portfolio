@@ -158,13 +158,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     starContainers.forEach(function(container) {
         const rating = parseFloat(container.getAttribute('data-stars'));
+        const color = container.closest('.skill-group').getAttribute('data-color');
         let starsHTML = '';
 
         for(let i = 1; i <= 5; i++) {
             if(i <= Math.floor(rating)) {
-                starsHTML += '<span class="star full">★</span>';
+                starsHTML += `<span class="star full" style="color: ${color};">★</span>`;
             } else if (i === Math.ceil(rating) && rating % 1 !== 0) {
-                starsHTML += '<span class="star half">★</span>';
+                starsHTML += `<span class="star half" style="background: linear-gradient(90deg, ${color} 50%, #e8eaed 50%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">★</span>`;
             } else {
                 starsHTML += '<span class="star empty">★</span>';
             }
