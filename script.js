@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    emailjs.init('T7Fw040srzVNHgGAs');
+
     const tabs = document.querySelectorAll('.tab-link');
 
     tabs.forEach(function(tab) {
@@ -54,12 +56,37 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        button.textContent = '✅ Message Sent!';
-        button.style.background = '#34a853';
-        setTimeout(function() {
+        button.textContent = '⏳ Sending...';
+        button.disabled = true;
+
+        emailjs.send(
+            'portfolio_service',
+            'portfolio_template',
+            {
+                from_name: name,
+                from_email: email,
+                message: message
+            }
+        ).then(function() {
+            //Success
+            button.textContent = '✅ Message Sent!';
+            button.style.background = '#34a853';
+            form.reset();
+            setTimeout(function() {
             button.textContent = 'Send Message';
             button.style.background = '';
         }, 2500);
+        }).catch(function(error) {
+            console.log('EmailJS error:', error);
+            button.textContent = '❌ Failed, try again';
+            button.style.background = '#ea4335';
+            button.disabled = false;
+            setTimeout(function() {
+                button.textContent = 'Send Message';
+                button.style.background = '';
+            }, 2500);
+        });
+
     });
 
     //Hero Section
